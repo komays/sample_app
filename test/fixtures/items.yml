@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  store: Express
+  name: shirt
+  price: 10.0
+  created_at: <%= 10.minutes.ago %>
+  user: michael
+
+two:
+  store: Urban Outfitters
+  name: pants
+  price: 11.5
+  created_at: <%= 3.years.ago %>
+  user: michael
+
+three:
+  store: Gap
+  name: skirt
+  price: 31.5
+  created_at: <%= 2.hours.ago %>
+  user: michael
+
+most_recent:
+  store: Limited
+  name: shoes
+  price: 100.0
+  created_at: <%= Time.zone.now %>
+  user: michael
+
+<% 30.times do |n| %>
+item_<%= n %>:
+  store: Faker::Company.name
+  price: Faker::Commerce.price
+  name: Faker::Commerce.product_name
+  img: Faker::Avatar.image
+  created_at: <%= 42.days.ago %>
+  user: michael
+<% end %>
