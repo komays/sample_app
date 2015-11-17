@@ -1,8 +1,16 @@
 <ul class="rig columns-4">
 	<li>
-		<img src= <%= item.img %> />
+		<% if item.img %>
+		  <img src= <%=item.img.url if item.img? %> />
+		<% end %>
+		<!--
+          <img src= <%= item.img %> />
+         -->
 	    <h4><%= item.name %></h4>
 		<h5><%= item.store %></h5>
 		<h6><%= number_to_currency(item.price) %></h6>
+		<% if current_user?(item.user) %>
+          <%= link_to "delete", item, method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
 	</li>
 </ul>

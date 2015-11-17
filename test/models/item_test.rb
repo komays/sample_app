@@ -18,4 +18,19 @@ class ItemTest < ActiveSupport::TestCase
   test "order should be most recent first" do
     assert_equal items(:most_recent), Item.first
   end
+
+  test "name should be present" do
+    @item.name = "   "
+    assert_not @item.valid?
+  end
+
+  test "price should be number" do
+    @item.price = "a"
+    assert_not @item.valid?
+  end
+
+  test "price should be greater than 0" do
+    @item.price = -3
+    assert_not @item.valid?
+  end
 end

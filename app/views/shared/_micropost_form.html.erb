@@ -1,0 +1,16 @@
+<%= form_for(@item) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :name, placeholder: "What is it?" %>
+  </div>
+  <div class="field">
+    <%= f.text_area :store, placeholder: "Where's it from?" %>
+  </div>
+  <div class="field">
+    <%= f.text_area :price, placeholder: "How much is it?" %>
+  </div>
+  <div class="field">
+    <%= f.text_area :img, placeholder: "What's the URL of the picture?" %>
+  </div>
+  <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>

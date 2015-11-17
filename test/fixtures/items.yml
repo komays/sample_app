@@ -28,6 +28,34 @@ most_recent:
   created_at: <%= Time.zone.now %>
   user: michael
 
+four:
+  store: AE 
+  name: vest
+  price: 86.99
+  created_at: <%= 4.days.ago %>
+  user: archer
+
+five:
+  store: Express
+  name: purse
+  price: 36
+  created_at: <%= 3.hours.ago %>
+  user: lana
+
+six:
+  store: AF
+  name: shoes
+  price: 100
+  created_at: <%= 4.minutes.ago %>
+  user: lana
+
+seven:
+  store: Nordstrom
+  name: necklace
+  price: 30
+  created_at: <%= 3.seconds.ago %>
+  user: archer
+
 <% 30.times do |n| %>
 item_<%= n %>:
   store: Faker::Company.name

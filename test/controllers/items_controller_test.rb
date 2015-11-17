@@ -19,4 +19,13 @@ class ItemsControllerTest < ActionController::TestCase
     end
     assert_redirected_to login_url
   end
+
+  test "should redirect destroy for wrong item" do
+    log_in_as(users(:michael))
+    item = items(:seven)
+    assert_no_difference 'Item.count' do
+      delete :destroy, id: item
+    end
+    assert_redirected_to root_url
+  end
 end
