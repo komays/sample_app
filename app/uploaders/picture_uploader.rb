@@ -2,7 +2,7 @@
 
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  process resize_to_fit: [400, 500]
+  process resize_to_fit: [300, 400]
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
