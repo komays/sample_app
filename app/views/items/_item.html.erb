@@ -1,16 +1,66 @@
-<ul class="rig columns-4">
-	<li>
-		<% if item.img %>
-		  <img src= <%=item.img.url if item.img? %> />
-		<% end %>
-		<!--
-          <img src= <%= item.img %> />
-         -->
-	    <h4><%= item.name %></h4>
-		<h5><%= item.store %></h5>
-		<h6><%= number_to_currency(item.price) %></h6>
-		<% if current_user?(item.user) %>
-          <%= link_to "delete", item, method: :delete, data: { confirm: "Are you sure?" } %>
-        <% end %>
+<ul class="col-sm-3 col-md-3 col-lg-3">
+	<li style="font-size: 0px;">
+		<div class="thumbnail" data-key="secondSameHeights">
+				
+				<img src= <%=item.img.url if item.img? %> />
+				
+				<div class="caption" style="margin: 10px;">
+					<div class="row">
+	    				<h4><%= item.name %></h4>
+	    			</div>
+	    			<div class="row">
+						<h5><%= item.store %></h5>
+					</div>
+					<div class="row">
+						<h6><%= number_to_currency(item.price) %></h6>
+					</div>
+					<div class="row" style="font-size: 10px;">
+						<% if current_user?(item.user) %>
+          					<%= link_to "delete", item, method: :delete, data: { confirm: "Are you sure?" } %>
+        				<% end %>
+        			</div>
+        		</div>
+        </div>
 	</li>
 </ul>
+
+<script type="text/javascript">
+	if ('addEventListener' in window) {
+	    // first group
+	    window.addEventListener('resize', function(){
+	        sameHeights('[data-key="sameHeights"]');
+	    });
+	    window.addEventListener('load', function(){
+	        sameHeights('[data-key="sameHeights"]');
+	    });
+	    // second group
+	    window.addEventListener('resize', function(){
+	        sameHeights('[data-key="secondSameHeights"]');
+	    });
+	    window.addEventListener('load', function(){
+	        sameHeights('[data-key="secondSameHeights"]');
+	    });
+	}
+</script>
+
+<script type="text/javascript">
+	function sameHeights(selector) {
+	    var selector = selector || '[data-key="sameHeights"]',
+	        query = document.querySelectorAll(selector),
+	        elements = query.length,
+	        max = 0;
+	    if (elements) {
+	        while (elements--) {
+	            var element = query[elements];
+	            if (element.offsetHeight > max) {
+	                max = element.offsetHeight;
+	            }
+	        }
+	        elements = query.length;
+	        while (elements--) {
+	            var element = query[elements];
+	            element.style.height = max + 'px';
+	        }
+	    }
+	}
+</script>
